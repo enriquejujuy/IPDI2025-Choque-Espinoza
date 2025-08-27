@@ -1,1 +1,83 @@
-prueba
+import tkinter as tk
+from tkinter import filedialog, ttk
+from PIL import Image, ImageTk, ImageOps, ImageFilter
+
+# Variables globales
+imagen_original = None
+imagen_procesada = None
+
+def cargar_imagen():
+    global imagen_original
+    ruta = filedialog.askopenfilename(filetypes=[("Imágenes", "*.jpg *.jpeg *.png *.bmp *.gif")])
+    if ruta:
+        imagen_original = Image.open(ruta).resize((300, 300))
+        mostrar_imagen(imagen_original, etiqueta_original)
+
+def aplicar_filtro(event=None):
+    global imagen_procesada
+    if imagen_original:
+        filtro = combo_filtros.get()
+        if filtro == "Escala de grises":
+            imagen_procesada = ImageOps.grayscale(imagen_original)
+        elif filtro == "Invertir colores":
+            imagen_procesada = ImageOps.invert(imagen_original.convert("RGB"))
+        elif filtro == "Desenfoque":
+            imagen_procesada = imagen_original.filter(ImageFilter.BLUR)
+        elif filtro == "Contorno":
+            imagen_procesada = imagen_original.filter(ImageFilter.CONTOUR)
+        elif filtro == "Relieve":
+            imagen_procesada = imagen_original.filter(ImageFilter.EMBOSS)
+        elif filtro == "Enfocar":
+            imagen_procesada = imagen_original.filter(ImageFilter.SHARPEN)
+        else:
+            imagen_procesada = imagen_original.copy()
+        mostrar_imagen(imagen_procesada, etiqueta_procesada)
+
+def mostrar_imagen(imagen, etiqueta):
+    imagen_tk = ImageTk.PhotoImage(imagen)
+    etiqueta.config(image=imagen_tk)
+    etiqueta.image = imagen_tk
+
+def guardar_imagen():
+    if imagen_procesada:
+        ruta_guardado = filedialog.asksaveasfilename(defaultextension=".png",
+                                                     filetypes=[("PNG", "*.png"), ("JPEG", "*.jpg"), ("BMP", "*.bmp")])
+        if ruta_guardado:
+            imagen_procesada.save(ruta_guardado)
+
+# Crear ventana principal
+ventana = tk.Tk()
+ventana.title("Editor de Imágenes")
+ventana.geometry("800x500")
+
+# 🔧 Frame para botones (ubicación modificable)
+frame_botones = tk.Frame(ventana)
+frame_botones.place(x=50, y=20)  # ← Cambiá estas coordenadas para mover el bloque de botones
+
+# Botón para cargar imagen
+btn_cargar = tk.Button(frame_botones, text="📂 Cargar Imagen", command=cargar_imagen)
+btn_cargar.grid(row=0, column=0, padx=5)
+
+# Menú desplegable de filtros
+combo_filtros = ttk.Combobox(frame_botones, values=[
+    "Escala de grises", "Invertir colores", "Desenfoque", "Contorno", "Relieve", "Enfocar"
+], state="readonly", width=20)
+combo_filtros.set("Selecciona un filtro")
+combo_filtros.grid(row=0, column=1, padx=5)
+combo_filtros.bind("<<ComboboxSelected>>", aplicar_filtro)
+
+# Botón para guardar imagen
+btn_guardar = tk.Button(frame_botones, text="💾 Guardar Procesada", command=guardar_imagen)
+btn_guardar.grid(row=0, column=2, padx=5)
+
+frame_imagenes = tk.Frame(ventana)
+frame_imagenes.place(x=50, y=80)  # ← También podés mover este bloque si querés
+
+etiqueta_original = tk.Label(frame_imagenes, text="Imagen Original")
+etiqueta_original.pack(side="left", padx=30)
+
+etiqueta_procesada = tk.Label(frame_imagenes, text="Imagen Procesada")
+etiqueta_procesada.pack(side="right", padx=30)
+
+# Ejecutar interfaz
+ventana.mainloop()
