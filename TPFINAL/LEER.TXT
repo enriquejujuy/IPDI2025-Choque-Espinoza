@@ -1,5 +1,7 @@
 ---------DATASET-ORIGINAL----------
 https://drive.google.com/drive/folders/1WBZo9XjD8lB4uDEzLvC3-UOyHWYpz3X9?usp=sharing
+-------- DATASET FINE TUNING ----------
+https://drive.google.com/drive/folders/1tDK4ZnEyuqUW-99kRYveXFx3lNErFvBD?usp=sharing
 
 ----------YOLOV8 NANO--------------
 Link RESULTADOS de entrenamiento YOLO v8n
