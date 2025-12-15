@@ -1,1 +1,1 @@
-Procesamiento Digital de Imagenes
+GRUPO - 05 - Procesamiento Digital de Imagenes
