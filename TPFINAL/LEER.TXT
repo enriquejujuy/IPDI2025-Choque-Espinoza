@@ -1,4 +1,10 @@
-----------YOLOV8 NANO---------------
+----------YOLOV8 NANO--------------
+Link RESULTADOS de entrenamiento YOLO v8n
+https://drive.google.com/drive/folders/1hnffFGGQvRRcXoMt08a-WSIVv-CpgzQ7?role=writer
+link - modelos entrenados 
+https://drive.google.com/drive/folders/1Ec3il_b7ktGYLkgNLC5DGSM_yeM4ZCoW?role=writer
+Link - programas en colab de los entrenamientos
+https://drive.google.com/drive/folders/1YXC5Tzx-kUJZC4b_HkU2HuY_cdRKNPV1?role=writer
 
 ----------YOLOV8M---------------
 link - Pruebas del video resultados:
