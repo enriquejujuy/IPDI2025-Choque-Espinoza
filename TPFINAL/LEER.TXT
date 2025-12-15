@@ -18,3 +18,5 @@ link - Pruebas del video resultados:
 https://drive.google.com/drive/folders/18VuoTe9Jz6qcY_VcOWADPk9aYjDfGpJm?usp=sharing
 link - Resultados entrenamiento YOLOV8M:
 https://drive.google.com/drive/folders/137I8ZSF-DKWEyLkqjfuLqsy-YbTG2OeV?usp=sharing
+
+PRESENTACION: https://www.canva.com/design/DAG7HKD104M/s5NSVo1gZK7TGbLiEFBFrQ/edit
